@@ -1,3 +1,53 @@
 simpleWeather
 
 requirements
+
+ - hide the contents of the app when switching to other app or home screen.
+
+    several approaches were tested and this is reflected in the final app (hidden content screen was not required)
+
+    never had such a requirement anyway i assumed the app should be in the recent list but with hidden contents
+    and the latter should reflect the last screen or at least should show a pretty screen
+
+     1 - old 'onCreateThumbnail' is what was needed -> deprecated and does not work anymore
+
+     2 - hide content or putting an overlay screen when app goes to background -> does not work, there is a racing condition
+     between system and app, sometimes works but most of the times system is faster and takes a
+     picture of the UI with showing contents
+
+     at this point the final decision would be based on more future requirements
+
+     3 - use 'FLAG_SECURE' -> works
+        drawbacks:
+            D3.1 - we cannot show any custom image in recent app list (app stays white)
+            D3.2 - user cannot take a screenshot of the app (this might be a good thing, not sure)
+        pros:
+            P3.1 - app works has it should, follows the system behaviours
+            P3.2 - does not brake any app structure, nor makes code harder
+
+
+     4 - use some sort o hiding contents screen (could also be a lock screen for security purposes), which
+     could show specific safe content (related to the app) and remove completely the screen with sensitive information
+     upon going to background
+        drawbacks:
+             D4.1 - breaks default system user flow (in some devices we can switch to last opened app with a shortcut command) -> very big one
+             (we must run the sensitive screens in a new task and run the app in there so that it can be closed if user
+             leaves and thus the last opened app would be the lockscreen thus breaking the default 'open last app' normal
+             system behaviour
+             D4.2 - if user leaves the app, will loose all states (everything will be closed) -> system will close all
+             sensitive screens inside the defined task
+             D4.3 - to avoid D4.2, potentially the app might be able to persist every litle state and restore everything manually -> A LOT more work, very bug prone
+             D4.4 - following D4.3 -> development would feel like going againts the system
+         pros:
+             P4.1 - user relates easier to a custom screen, instead of a white screen
+
+
+    Conclusion:
+
+    I followed approach 3, seems the best approach and does not goes againts the system
+
+    note: i researched the problem but a deeper research and more testing might bring other potential solutions.
+
+ - You must use this API to get the weather:
+   https://developer.yahoo.com/weather/
+
