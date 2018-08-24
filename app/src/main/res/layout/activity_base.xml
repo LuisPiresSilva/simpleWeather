@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".baseActivity">
+
+
+    <!--LOADING-->
+    <ProgressBar
+        android:id="@+id/weather_data_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"/>
+
+
+
+
+
+    <!--SHOW DATA-->
+    <LinearLayout
+        android:id="@+id/weather_data_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/weather_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageView
+                android:id="@+id/weather_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="108dp"
+                android:minHeight="108dp"/>
+
+
+            <LinearLayout
+                android:id="@+id/weather_resume_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="108dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/weather_image"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/weather_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"/>
+
+                <TextView
+                    android:id="@+id/weather_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"/>
+
+                <TextView
+                    android:id="@+id/weather_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+    <!--ERROR-->
+    <LinearLayout
+        android:id="@+id/weather_errors_options_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/weather_text_error_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"/>
+
+        <Button
+            android:id="@+id/weather_button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"/>
+
+        <Button
+            android:id="@+id/weather_button_load_lisbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load some city\n(Lisbon)"/>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
