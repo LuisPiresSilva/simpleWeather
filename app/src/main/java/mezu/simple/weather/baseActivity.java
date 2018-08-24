@@ -268,14 +268,12 @@ public class baseActivity extends AppCompatActivity implements ISecureActivity {
 
     @Override
     public void hideContents_for_background() {
-        Log.i("activity","hide");
 
     }
 
 
     @Override
     public void showContents_for_foreground() {
-        Log.i("activity","show");
         Intent myIntent = new Intent(this, secureActivity.class);
         startActivity(myIntent);
 

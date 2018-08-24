@@ -1,6 +1,6 @@
-simpleWeather
+Simple Weather
 
- - requirements notes
+ - Requirements Notes
 
      - hide the contents of the app when switching to other app or home screen.
 
@@ -66,5 +66,29 @@ simpleWeather
             so not very good results so followed just the specific location approach
 
 
- - Android project notes
+ - Android Project Notes
+
+    decided on
+     - a MVC structure (faster for the exercise purpose)
+     - a combination of retrofit2 and RXJava2 to handle requests and model parsing
+
+
+    edge cases that were not handled
+        - if a user disables device location (not the location permission) -> app does not handle that, app should check
+        state of device location and handle this edge case gracefully
+
+        - celsius <-> fahrenheit API response check (it should always return fahrenheit but was not checked or handled)
+
+        - API specific edge response codes were not checked
+
+        - image request error
+
+        - some null checks of model data should have been made
+
+    short comings
+        - celsius <-> fahrenheit degrees option
+
+        - i manualy tested some flows like rotation behavior but project should have automated tests
+
+        - few unit and instrumentation tests
 
